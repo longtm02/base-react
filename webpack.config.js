@@ -19,7 +19,7 @@ module.exports = {
             compilerOptions: {
               noEmit: false, // this option will solve the issue
             },
-            configFile: 'tsconfig.json',
+            configFile: "tsconfig.json",
           },
         },
       },
@@ -32,7 +32,7 @@ module.exports = {
         include: /public/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
           },
         ],
       },
@@ -41,41 +41,44 @@ module.exports = {
         exclude: /\.module\.(scss|sass)$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
           },
         ],
         sideEffects: true,
       },
-
       {
-        test: /\.module\.(scss|sass)$/ ,
-        exclude: /\.(scss|sass)$/,
+        test: /\.module\.(scss|sass)$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
           },
           {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
+            loader: "css-loader",
             options: {
               sourceMap: true,
-              localIdentName: '[local]__[hash:base64:5]',
-              modules: true,
+              importLoaders: 1,
+              modules: {
+                  localIdentName: '[name]__[local]___[hash:base64:5]'
+              }
             },
           },
+          {
+            loader: "postcss-loader",
+          },
+          {
+            loader: "sass-loader",
+          },
         ],
-        sideEffects: true,
+        // sideEffects: true,
       },
     ],
   },
@@ -96,6 +99,6 @@ module.exports = {
     historyApiFallback: true,
   },
   watchOptions: {
-    ignored: ['node_modules', 'dist', 'logs'],
+    ignored: ["node_modules", "dist", "logs"],
   },
 };
