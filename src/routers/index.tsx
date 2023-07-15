@@ -1,33 +1,33 @@
-import NotFoundPage from "./../pages/error/NotFoundPage";
-import { createBrowserRouter, redirect } from "react-router-dom";
-import AuthRouter from "./auth";
-import DashboardRouter from "./dashboard";
+import NotFoundPage from './../pages/error/NotFoundPage';
+import {createBrowserRouter, redirect} from 'react-router-dom';
+import AuthRouter from './auth';
+import DashboardRouter from './dashboard';
 
 const mainLoader = (): any => {
-  const user = localStorage.getItem("user");
-  return user ? true : redirect("/login");
+  const user = localStorage.getItem('user');
+  return user ? true : redirect('/login');
 };
 
 const authLoader = (loader: any): any => {
-  const user = localStorage.getItem("user");
-  return user ? redirect("/dashboard") : false;
+  const user = localStorage.getItem('user');
+  return user ? redirect('/dashboard') : false;
 };
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     // element: <AuthLayout />,
     loader: authLoader,
     children: [...AuthRouter],
   },
   {
-    path: "/",
+    path: '/',
     // element: <MainLayout />,
     loader: mainLoader,
     children: [...DashboardRouter],
   },
   {
-    path: "*",
+    path: '*',
     element: <NotFoundPage />,
   },
 ]);

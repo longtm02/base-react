@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-	headers: {
-		Accept: 'applications/json',
-		'Content-Type': 'application/json',
-	},
+  headers: {
+    Accept: 'applications/json',
+    'Content-Type': 'application/json',
+  },
 });
 
 // axiosClient.interceptors.request.use(
@@ -33,7 +33,7 @@ const axiosClient = axios.create({
 // 		} = error;
 // 		switch (status) {
 // 			case 401:
-	
+
 // 			default:
 // 				break;
 // 		}
